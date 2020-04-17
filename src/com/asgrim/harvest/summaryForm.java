@@ -93,9 +93,7 @@ public class summaryForm {
                         super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
                         if (row >= plainRows) {
-                            this.setValue(table.getValueAt(row, column));
                             this.setFont(this.getFont().deriveFont(Font.BOLD));
-                            this.setForeground(Color.BLUE);
                         }
                         return this;
                     }
