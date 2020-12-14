@@ -30,7 +30,7 @@ public class summaryForm {
         hoursTable.setRowHeight(30);
         hoursTable.getColumnModel().getColumn(0).setMaxWidth(100);
 
-        for (DatePeriod datePeriod : DatePeriod.generateDatePeriodsRelativeToDate(new Date())) {
+        for (DatePeriod datePeriod : DatePeriod.generateDatePeriodsRelativeToDate(DatePeriod.nextInvoiceDate())) {
             dateList.addItem(datePeriod);
         }
 

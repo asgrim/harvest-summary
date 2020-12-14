@@ -17,6 +17,18 @@ public class DatePeriod {
         this.to = to;
     }
 
+    public static Date nextInvoiceDate()
+    {
+        Calendar cal = GregorianCalendar.getInstance();
+        cal.setTime(new Date());
+
+        while(cal.get(Calendar.DAY_OF_MONTH) != 1 && cal.get(Calendar.DAY_OF_MONTH) != 15) {
+            cal.add(Calendar.DAY_OF_MONTH, 1);
+        }
+
+        return cal.getTime();
+    }
+
     public static List<DatePeriod> generateDatePeriodsRelativeToDate(Date now)
     {
         ArrayList<DatePeriod> periods = new ArrayList<>();
