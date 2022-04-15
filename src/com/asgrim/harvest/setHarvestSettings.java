@@ -10,6 +10,7 @@ public class setHarvestSettings extends JDialog {
     private JButton buttonCancel;
     private JTextField apiKeyEntry;
     private JTextField accountIdEntry;
+    private JTextField userIdEntry;
 
     public setHarvestSettings() {
         setContentPane(contentPane);
@@ -18,6 +19,7 @@ public class setHarvestSettings extends JDialog {
 
         apiKeyEntry.setText(Preferences.userRoot().get(summaryForm.PREFERENCE_API_KEY, ""));
         accountIdEntry.setText(Preferences.userRoot().get(summaryForm.PREFERENCE_ACCOUNT_ID, ""));
+        userIdEntry.setText(Preferences.userRoot().get(summaryForm.PREFERENCE_USER_ID, ""));
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -51,6 +53,7 @@ public class setHarvestSettings extends JDialog {
         // add your code here
         Preferences.userRoot().put(summaryForm.PREFERENCE_API_KEY, apiKeyEntry.getText());
         Preferences.userRoot().put(summaryForm.PREFERENCE_ACCOUNT_ID, accountIdEntry.getText());
+        Preferences.userRoot().put(summaryForm.PREFERENCE_USER_ID, userIdEntry.getText());
         dispose();
     }
 

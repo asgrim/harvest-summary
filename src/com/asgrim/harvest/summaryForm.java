@@ -21,6 +21,7 @@ public class summaryForm {
 
     public static final String PREFERENCE_API_KEY = "com/asgrim/harvest/api_key";
     public static final String PREFERENCE_ACCOUNT_ID = "com/asgrim/harvest/account_id";
+    public static final String PREFERENCE_USER_ID = "com/asgrim/harvest/user_id";
 
     public summaryForm() {
         Object[] columns = {"Hours", "Description"};
@@ -44,6 +45,7 @@ public class summaryForm {
 
             String apiKey = Preferences.userRoot().get(PREFERENCE_API_KEY, "");
             String accountId = Preferences.userRoot().get(PREFERENCE_ACCOUNT_ID, "");
+            String userId = Preferences.userRoot().get(PREFERENCE_USER_ID, "");
             if (apiKey.equals("") || accountId.equals("")) {
                 JOptionPane.showMessageDialog(
                     frame,
@@ -56,7 +58,7 @@ public class summaryForm {
 
             String responseBody;
             try {
-                responseBody = new HarvestClient(apiKey, accountId).requestTimeEntriesForPeriod(selectedPeriod);
+                responseBody = new HarvestClient(apiKey, accountId, userId).requestTimeEntriesForPeriod(selectedPeriod);
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
                 return;

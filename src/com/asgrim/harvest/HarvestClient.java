@@ -13,11 +13,13 @@ public class HarvestClient {
 
     private final String harvestApiKey;
     private final String harvestAccountId;
+    private final String harvestUserId;
 
-    public HarvestClient(@NotNull String harvestApiKey, @NotNull String harvestAccountId)
+    public HarvestClient(@NotNull String harvestApiKey, @NotNull String harvestAccountId, @NotNull String userId)
     {
         this.harvestApiKey = harvestApiKey;
         this.harvestAccountId = harvestAccountId;
+        this.harvestUserId = userId;
     }
 
     public String requestTimeEntriesForPeriod(@NotNull DatePeriod datePeriod) throws IOException, InterruptedException {
@@ -25,7 +27,9 @@ public class HarvestClient {
                 + "?from="
                 + datePeriod.fromDateFormatted()
                 + "&to="
-                + datePeriod.toDateFormatted();
+                + datePeriod.toDateFormatted()
+                + "&user_id="
+                + harvestUserId;
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
