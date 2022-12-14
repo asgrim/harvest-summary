@@ -46,7 +46,7 @@ public class summaryForm {
             String apiKey = Preferences.userRoot().get(PREFERENCE_API_KEY, "");
             String accountId = Preferences.userRoot().get(PREFERENCE_ACCOUNT_ID, "");
             String userId = Preferences.userRoot().get(PREFERENCE_USER_ID, "");
-            if (apiKey.equals("") || accountId.equals("")) {
+            if (apiKey.equals("") || accountId.equals("") || userId.equals("")) {
                 JOptionPane.showMessageDialog(
                     frame,
                     "Harvest API settings were not configured yet.",

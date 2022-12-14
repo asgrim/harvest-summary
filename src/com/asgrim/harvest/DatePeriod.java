@@ -22,7 +22,7 @@ public class DatePeriod {
         Calendar cal = GregorianCalendar.getInstance();
         cal.setTime(new Date());
 
-        while(cal.get(Calendar.DAY_OF_MONTH) != 1 && cal.get(Calendar.DAY_OF_MONTH) != 15) {
+        while(cal.get(Calendar.DAY_OF_MONTH) != 1) {
             cal.add(Calendar.DAY_OF_MONTH, 1);
         }
 
@@ -37,27 +37,13 @@ public class DatePeriod {
 
         for(int i = 0; i < 4; i++) {
             Date invoiceDate, from, to;
-            if (cal.get(Calendar.DAY_OF_MONTH) >= 15) {
-                cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), 15, 0, 0, 0);
-                invoiceDate = cal.getTime();
-
-                cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), 1);
-                from = cal.getTime();
-
-                cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), 14);
-                to = cal.getTime();
-
-                periods.add(new DatePeriod(invoiceDate, from, to));
-                cal.setTime(from);
-                continue;
-            }
 
             cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), 1, 0, 0, 0);
             invoiceDate = cal.getTime();
 
             cal.add(Calendar.MONTH, -1);
 
-            cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), 15);
+            cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), 1);
             from = cal.getTime();
 
             cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.getActualMaximum(Calendar.DAY_OF_MONTH));
